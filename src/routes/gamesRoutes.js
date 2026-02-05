@@ -11,7 +11,7 @@ const {
 
 router.get("/", getGames);
 router.get("/:id", getGamesById);
-router.get("/:name", getGamesByName);
+router.get("/name/:name", getGamesByName);
 router.post("/", createGames);
 router.put("/:id", updateGames);
 router.delete("/:id", deleteGames);

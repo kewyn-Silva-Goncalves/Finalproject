@@ -30,7 +30,9 @@ const getGamesById = async (req, res) => {
 
 const getGamesByName = async (req, res) => {
     try {
-        const game = await Game.find(req.body.name);
+        const {name} = req.params;
+
+        const game = await Game.find({name});
         res.status(200).json(game);
     } catch (error) {
         res.status(400).json({ message: error.message });
