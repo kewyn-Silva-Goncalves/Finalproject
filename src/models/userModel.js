@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema(
         CPF: {type: Number, required: true, minlength: 11},
         email: {type: String, required: true, unique: true, lowercase: true, trim: true},
         dateofbirth: {type: String, required: true, trim: true},
-        address: {type: String, required: true, minlength: 6, trim: true}
+        address: {type: String, required: true, minlength: 6, trim: true},
+        balance: {type: Number, required: false}
     }
 )
 
