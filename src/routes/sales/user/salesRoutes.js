@@ -2,14 +2,12 @@ const express = require("express");
 const router = express.Router();
 const {
     getSale,
-    getSaleById,
     createSale,
     reimbursementSale,
-} = require("../controllers/salesControllers");
+} = require("../../../controllers/sales/user/saleUserController");
 
 router.get("/", getSale);
-router.get("/:id", getSaleById);
-router.post("/", createSale);
+router.post("/:id/", createSale);
 router.delete("/:id", reimbursementSale);
 
 module.exports = router;

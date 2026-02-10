@@ -1,4 +1,4 @@
-const User = require("../models/userModel");
+const User = require("../../../models/user/userModel");
 
 const getUser = async (req, res) => {
     try {
@@ -10,11 +10,12 @@ const getUser = async (req, res) => {
 }
 
 const createUser = async (req, res) => {
+    const user = new User(req.body);
     try {
-        const created = await new User(req.body);
-        res.status(201).json(created);
+        await user.save();
+        res.status(201).json(user);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json({ message: error.message })
     }
 }
 
@@ -36,18 +37,20 @@ const deleteUser = async (req, res) => {
     }
 }
 
-const getUserById = async (req, res) => {
+const getUserByName = async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
+        const {name} = req.params;
+
+        const user = await User.find({name});
         res.status(200).json(user);
     } catch (error) {
-        res.status(404).json({ message: "User not found" })
+        res.status(400).json({ message: error.message });
     }
 }
 
 module.exports = {
     getUser,
-    getUserById,
+    getUserByName,
     createUser,
     deleteUser,
     updateUser,

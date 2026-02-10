@@ -1,5 +1,6 @@
-const { findByIdAndDelete } = require("../models/gamesModel");
-const Sale = require("../models/salesModels");
+const Sale = require("../../../models/user/salesModels")
+const User = require("../../../models/user/userModel");
+const Game = require("../../../models/admin/gamesModel");
 
 const getSale = async (req, res) => {
     try {
@@ -12,17 +13,8 @@ const getSale = async (req, res) => {
 
 const createSale = async (req, res) => {
     try {
-        const created = await new Sale(req.body);
+        const created = new Sale(req.body, req.body.gameId, req.body.userId);
         res.status(201).json(created);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
-}
-
-const getSaleById = async (req, res) => {
-    try {
-        const sale = await Sale.findById(req.params.id);
-        res.status(200).json(sale);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -40,6 +32,5 @@ const reimbursementSale = async (req, res) => {
 module.exports = {
     getSale,
     createSale,
-    getSaleById,
     reimbursementSale,
 }

@@ -2,15 +2,15 @@ const express = require("express");
 const router = express.Router();
 const {
     getGames,
-    createGames,
-    getGamesById,
     getGamesByName,
+    getGamesById,
+    createGames,
     updateGames,
     deleteGames,
-} = require("../controllers/gamesControllers.js");
+} = require("../../../controllers/games/admin/gamesAdminController");
 
 router.get("/", getGames);
-router.get("/:id", getGamesById);
+router.get("/:id", getGamesById)
 router.get("/name/:name", getGamesByName);
 router.post("/", createGames);
 router.put("/:id", updateGames);
