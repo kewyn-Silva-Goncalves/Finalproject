@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 function authMiddleware(req, res, next) {
     const header = req.headers.authorization;
 
-    if (!header || !header.startWith("Bearer ")) {
+    if (!header || !header.startsWith("Bearer ")) {
         res.status(401).json({ message: "Token not informed" });
     }
 
