@@ -4,7 +4,6 @@ const GameSchema = new mongoose.Schema(
     {
         name: {type: String, required: true, trim: true},
         price: {type: Number, required: true},
-        licences: {type: Number, required: true},
         description: {type: String, required: true, trim: true},
         realeasedate: {type: String, required: true, trim: true},
         gameId: {type: String, required: true, trim: true}
