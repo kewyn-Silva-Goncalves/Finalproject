@@ -4,7 +4,7 @@ const Game = require("../../../models/admin/gamesModel");
 
 const getSale = async (req, res) => {
     try {
-        const sale = await Sale.find(req.body);
+        const sale = await Sale.find();
         rs.status(200).json(sale);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -12,8 +12,13 @@ const getSale = async (req, res) => {
 }
 
 const createSale = async (req, res) => {
+    const userId = req.user.id;
+    const { game } = req.body;
     try {
-        const created = new Sale(req.body);
+        const created = await Sale.create({
+            customerId: userId,
+            game: { game }
+        });
         res.status(201).json(created);
     } catch (error) {
         res.status(400).json({ message: error.message });

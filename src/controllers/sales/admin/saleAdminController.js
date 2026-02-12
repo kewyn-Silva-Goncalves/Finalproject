@@ -2,7 +2,7 @@ const Sale = require("../../../models/user/salesModels");
 
 const getSaleAdmin = async (req, res) => {
     try {
-        const sale = await Sale.find(req.body);
+        const sale = await Sale.find();
         rs.status(200).json(sale);
     } catch (error) {
         res.status(500).json({ message: error.message });

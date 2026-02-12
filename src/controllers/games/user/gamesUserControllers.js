@@ -2,7 +2,7 @@ const Game = require("../../../models/user/gamesModel");
 
 const getGames = async (req, res) => {
     try {
-        const game = await Game.find(req.body);
+        const game = await Game.find();
         res.status(200).json(game);
     } catch (error) {
         res.status(500).json({ message: error.message });

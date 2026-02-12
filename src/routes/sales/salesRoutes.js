@@ -14,7 +14,7 @@ const isAdmin = require("../../middlewares/adminMiddlewares");
 
 router.get("/", auth, isAdmin,getSale);
 router.get("/:id", auth, isAdmin, getSaleByIdAdmin);
-router.post("/:id/", auth, createSale);
+router.post("/:id", auth, createSale);
 router.delete("/:id", auth, reimbursementSale);
 
 module.exports = router;
