@@ -13,7 +13,7 @@ const getSale = async (req, res) => {
 
 const createSale = async (req, res) => {
     try {
-        const created = new Sale(req.body, req.body.gameId, req.body.userId);
+        const created = new Sale(req.body);
         res.status(201).json(created);
     } catch (error) {
         res.status(400).json({ message: error.message });

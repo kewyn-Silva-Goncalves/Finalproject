@@ -9,16 +9,6 @@ const getUser = async (req, res) => {
     }
 }
 
-const createUser = async (req, res) => {
-    const user = new User(req.body);
-    try {
-        await user.save();
-        res.status(201).json(user);
-    } catch (error) {
-        res.status(400).json({ message: error.message })
-    }
-}
-
 const updateUser = async (req, res) => {
     try {
         const updated = await User.findByIdAndUpdate(req.params.id, req.body);
@@ -51,7 +41,6 @@ const getUserByName = async (req, res) => {
 module.exports = {
     getUser,
     getUserByName,
-    createUser,
     deleteUser,
     updateUser,
 }
